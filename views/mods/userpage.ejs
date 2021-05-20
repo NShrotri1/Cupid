@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= person %></title>
+  <%- include('../global/header') %>
+  <%- include('../global/navbar') %>
+  <form action = "/user/<%=person%>?_method=PUT" method = "POST">
+    <button>Notify User</button>
+  </form>
+  <form action = "/user/<%=person%>?_method=DELETE" method = "POST">
+    <button>Delete User</button>
+  </form>
+  <p>Note: If you use the delete button you might want to have two copies of this project since creating</p>
+  <p>new users involves uses the sign in API which I haven't added functionality for</p>
+  <%- include('../global/footer') %>
+  </html>

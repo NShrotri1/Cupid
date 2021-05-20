@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=crushInfo[0] %></title>
+  <%- include('../global/header') %>
+  <%- include('../global/navbar') %>
+  <h3><%=crushInfo[0] %></h3>
+  <br>
+  <table style="width:50%; text-align: center; margin-left: auto; margin-right: auto">
+  <tr>
+    <th>Number</th>
+    <th>Status</th>
+  </tr>
+    <tr>
+      <th><%=crushInfo[1]%></th>
+      <th>Pending</th>
+    </tr>
+</table>
+<br>
+<a href="/<%=crushInfo[0]%>/edit"><button>Edit Crush</button></a>
+<br>
+<form action = "/<%=crushInfo[0]%>?_method=DELETE" method = "POST">
+  <button>Delete Crush</button>
+</form>
+  <%- include('../global/footer') %>
+  </html>

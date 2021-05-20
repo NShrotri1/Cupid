@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <%- include('../global/header') %>
+  <%- include('../global/navbar') %>
+  <br>
+  <table style="width:50%; text-align: center; margin-left: auto; margin-right: auto">
+  <tr>
+    <th>Crush</th>
+    <th>Number</th>
+    <th>Status</th>
+  </tr>
+  <% for(let i = 0; i < crushList.length; i++){ %>
+    <tr>
+      <th><a href="/<%=crushList[i][0]%>"><%=crushList[i][0]%></a></th>
+      <th><%=crushList[i][1]%></th>
+      <th>Pending</th>
+    </tr>
+    <%}%>
+</table>
+  <%- include('../global/footer') %>
+  </html>

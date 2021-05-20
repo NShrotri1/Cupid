@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit <%=crushInfo[0] %>'s profile'</title>
+<%- include('../global/header') %>
+<%- include('../global/navbar') %>
+<form action = "/<%=crushInfo[0]%>?_method=PUT" method = "POST">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value = "<%=crushInfo[0] %>" required><br>
+  <label for="number">Number:</label><br>
+  <input type="number" id="number" name="number" value = "<%=crushInfo[1] %>" required><br>
+  <button>Edit Crush</button>
+</form>
+<br>
+<%- include('../global/footer') %>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <%- include('../global/header') %>
+</head>
+<body>
+  <form action="/signupAction"  method="post">
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username" required><br>
+  <label for="password">Password:</label><br>
+  <input type="text" id="password" name="password" required><br>
+  <input type="submit" value="Submit">
+  </form>
+  <%- include('../global/footer') %>
+  </html>

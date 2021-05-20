@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add a Crush</title>
+  <%- include('../global/header') %>
+  <%- include('../global/navbar') %>
+  <form action="/newCrush"  method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br>
+  <label for="number">Number:</label><br>
+  <input type="number" id="number" name="number" required><br>
+  <input type="submit" value="Submit">
+  </form>
+  <%- include('../global/footer') %>
+  </html>

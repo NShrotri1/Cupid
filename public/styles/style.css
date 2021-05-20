@@ -1,0 +1,71 @@
+#bd {
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #121212;
+  color: #FFFFFF;
+  opacity: 0.87;
+}
+h1 {
+  font-size: 113px;
+  letter-spacing: -1.5px;
+  font-weight: 300;
+}
+.subtitle {
+  font-size: 19px;
+  letter-spacing: 0.15px;
+  font-weight: 400;
+  padding-bottom: 0.5cm;
+}
+h2 {
+  font-size: 71px;
+  letter-spacing: -0.5px;
+  font-weight: 300;
+}
+h3 {
+  font-size: 56px;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+h4 {
+  font-size: 40px;
+  letter-spacing: 0.25px;
+  font-weight: 400px;
+}
+.k {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+p {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+footer {
+  opacity: 0.6;
+  text-align: center;
+  padding-top: 2cm;
+}
+.lnk {
+  color: #f2f2f2;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+figcaption {
+  color: #FFFFFF;
+  opacity: 0.6;
+  letter-spacing: 0.4px;
+  font-size: 12px;
+  font-weight: 400;
+}
+#psl {
+  width: 10cm;
+  height: auto;
+}
+.Titles {
+  color: #FFFFFF;
+  opacity: 0.6;
+  letter-spacing: 0.1px;
+  font-size: 16px;
+  font-weight: 500;
+}
