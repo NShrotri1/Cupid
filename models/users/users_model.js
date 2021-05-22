@@ -1,15 +1,49 @@
 var fs = require('fs');
+var admin = require("firebase-admin");
 
-exports.getAllCrushes = function(id) {
-  let u = fs.readFileSync('data/users/data.json', 'utf8');
-  let userData = JSON.parse(u)
-  return userData[id].crushes;
+var serviceAccount = require("../../config/firebase_config.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+// Create a database reference
+var db = admin.firestore();
+
+exports.getAllCrushes = function(username) {
+  var cList = []
+  var counter = 0
+  db.collection('users').get()
+  .then(function(snapshot){
+    snapshot.forEach(function(doc){
+      if(doc.id == username){
+        var u = doc.data().crushes
+        var v = doc.data().crushNumber
+        for (var i = 0; i < u.length; i++) {
+          cList.push([u[i], v[i]])
+          counter += 1
+        }
+      }
+    });
+  })
+  .catch(function(err){
+    console.log('Error getting documents', err);
+  });
+  return cList;
 }
 
 exports.getAllUsers = function() {
-  let u = fs.readFileSync('data/users/data.json', 'utf8');
-  let userData = JSON.parse(u)
-  return userData
+  let list = {}
+  db.collection('users').get()
+  .then(function(snapshot){
+    snapshot.forEach(function(doc){
+      list[doc.id] = doc.data()
+    });
+  })
+  .catch(function(err){
+    console.log('Error getting documents', err);
+  });
+  return list
 }
 exports.getUser = function(id) {
   let userData = exports.getAllUsers();
@@ -32,9 +66,32 @@ exports.getCrush = function(userId, id) {
 }
 
 exports.addCrush = function(id, newUser) {
-  let userData = exports.getAllUsers();
-  userData[id].crushes.push(newUser)
-  fs.writeFileSync('data/users/data.json', JSON.stringify(userData));
+  let personToUpdate = db.collection('users').doc(id);
+  console.log(id);
+  console.log(personToUpdate);
+  if(personToUpdate.crushes){
+    let info = personToUpdate.crushes
+  info.push(newUser[0])
+  let otherInfo = personToUpdate.crushNumber
+  otherInfo.push(newUser[1])
+  let updat = personToUpdate.update(
+    {
+      crushes: info,
+      crushNumber: otherInfo
+    }
+  )}
+  else {
+    let setUpdate = personToUpdate.set({
+    "id":12345,
+    "username":id,
+    "name":id,
+    "number":123456789,
+    "crushes":[newUser[0]],
+    "crushNumber":[newUser[1]],
+    "crushesAddedToday":0,
+    "flagged":false}
+  );
+  }
 }
 
 exports.updateCrush = function(userId, id, newInfo) {
@@ -45,7 +102,12 @@ exports.updateCrush = function(userId, id, newInfo) {
       break
     }
   }
-  fs.writeFileSync('data/users/data.json', JSON.stringify(userData));
+  let personToUpdate = db.collection('users').doc(userId);
+  let updat = personToUpdate.update(
+    {
+      crushes: userData[userId].crushes
+    }
+  )
 }
 
 exports.deleteCrush = function(userId, id) {
@@ -56,5 +118,10 @@ exports.deleteCrush = function(userId, id) {
       break
     }
   }
-  fs.writeFileSync('data/users/data.json', JSON.stringify(userData));
+  let personToUpdate = db.collection('users').doc(userId);
+  let updat = personToUpdate.update(
+    {
+      crushes: userData[userId].crushes
+    }
+  )
 }
