@@ -4,6 +4,15 @@ let request = require('request');
 
 let User = require('../../models/users/users_model')
 let Mod = require('../../models/mods/mods_model.js')
+
+function loggedIn(request, response, next) {
+  if (request.user) {
+    next();
+  } else {
+    response.redirect('/login');
+  }
+}
+
 router.get('/', function(request, response) {
   let list = User.getAllCrushes("mario@gmail.com")
   response.status(200);
