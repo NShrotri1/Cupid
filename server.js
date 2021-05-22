@@ -9,6 +9,7 @@ app.use(methodOverride('_method'));
 app.set('view_engine', 'ejs');
 app.use(express.static('public'));
 
+app.use(require('./controllers/auth'));
 app.use(require('./controllers/mods/cupid_controller.js'));
 app.use(require('./controllers/users/cupid_controller.js'));
 
